@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Demo</title>
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+    <script src="../lib/browser.min.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <script type="text/babel">
+        var Display = React.createClass({
+            render: function() {
+                return(
+                    <div>
+                        <p>{this.props.color}</p>
+                        <p>{this.props.num}</p>
+                        <p>{this.props.size}</p>
+                    </div>
+                );
+            }
+        });
+
+        var Shirt = React.createClass({
+            render: function() {
+                return (
+                    <div>
+                        <Display {...this.props}/>
+                    </div>
+                );
+            }
+        });
+
+        ReactDOM.render(
+            <div>
+                <Shirt color="steelblue" num="3.14" size="medium" />
+            </div>,
+            document.querySelector("#container")
+        );
+    </script>
+</body>
+</html>

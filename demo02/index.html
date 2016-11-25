@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Demo</title>
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+    <script src="../lib/browser.min.js"></script>
+    <style>
+        body {
+            background-color: #f2f3f6;
+        }
+        #container {
+            padding: 50px;
+        }
+        #container h1 {
+            font-size: 24px;
+            font-family: sans-serif;
+            color: #0080a8;
+        }
+        #container h2 {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script type="text/babel">
+        ReactDOM.render(
+            <div>
+                <h1>React.js特性</h1>
+                <h2>组件</h2>
+                <h2>JSX</h2>
+                <h2>Virtual DOM</h2>
+                <h2>Data Flow</h2>
+            </div>,
+            document.querySelector('#container')
+        );
+    </script>
+</body>
+</html>

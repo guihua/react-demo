@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Demo</title>
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+    <script src="../lib/browser.min.js"></script>
+    <style>
+        body {
+            background-color: #f2f3f6;
+        }
+        #container {
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script type="text/babel">
+        var Circle = React.createClass({
+            render: function() {
+                var circleStyle = {
+                    display: "inline-block",
+                    margin: 20,
+                    padding: 10,
+                    width: 100,
+                    height: 100,
+                    backgroundColor: this.props.bgcolor,
+                    borderRadius: "50%"
+                };
+
+                return (
+                    <div style={circleStyle}></div>
+                );
+            }
+        });
+
+        function showCircle() {
+            var colors = ["#393E41", "#E94F37", "#1C89BF", "#A1D363"];
+            var ran = Math.floor(Math.random() * colors.length);
+
+            // return a Circle with a randomly chosen color
+            return <Circle bgcolor={colors[ran]}/>;
+        };
+
+        ReactDOM.render(
+            <div>
+                {showCircle()}
+            </div>,
+            document.querySelector("#container")
+        );
+    </script>
+</body>
+</html>

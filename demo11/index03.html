@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Demo</title>
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+    <script src="../lib/browser.min.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <script type="text/babel">
+        var Button = React.createClass({
+            render: function () {
+                var buttonStyle = {
+                    width: 30,
+                    height: 30,
+                    lineHeight: "30px",
+                    fontFamily: "sans-serif",
+                    color: "#333",
+                    fontWeight: "bold",
+                    fontSize: "1em"
+                };
+
+                return (
+                    <button onClick={this.props.clickHandler} style={buttonStyle}>+</button>
+                )
+            }
+        });
+
+        var Counter = React.createClass({
+            render: function () {
+                var textStyle = {
+                    fontSize: 72,
+                    fontFamily: "sans-serif",
+                    color: "#333",
+                    fontWeight: "bold"
+                };
+
+                return (
+                    <div style={textStyle}>
+                        {this.props.display}
+                    </div>
+                );
+            }
+        });
+
+        var CounterWrap = React.createClass({
+            getInitialState: function() {
+                return {
+                    count: 0
+                };
+            },
+            increase: function () {
+                this.setState({
+                    count: this.state.count + 1
+                });
+            },
+            render: function () {
+                var backgroundStyle = {
+                    padding: 50,
+                    width: 250,
+                    height: 100,
+                    backgroundColor: "#FFC53A",
+                    borderRadius: 10,
+                    textAlign: "center"
+                };
+
+                return (
+                    <div style={backgroundStyle}>
+                        <Counter display={this.state.count} />
+                        <Button clickHandler={this.increase} />
+                    </div>
+                );
+            }
+        });
+
+        ReactDOM.render(
+            <CounterWrap />,
+            document.querySelector('#container')
+        );
+    </script>
+</body>
+</html>
