@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Demo</title>
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+    <script src="../lib/browser.min.js"></script>
+    <style>
+        body {
+            padding: 50px;
+            background-color: #66CCFF;
+            font-family: sans-serif;
+        }
+        .todoListMain .header input {
+            padding: 10px;
+            border: 2px solid #FFF;
+            font-size: 16px;
+        }
+        .todoListMain .header input:focus {
+            outline: 0;
+        }
+        .todoListMain .header button {
+            padding: 10px;
+            margin: 10px;
+            background-color: #0066FF;
+            border: 2px solid #0066FF;
+            color: #FFF;
+            font-size: 16px;
+        }
+        .todoListMain .header button:hover {
+            background-color: #003399;
+            border: 2px solid #003399;
+            cursor: pointer;
+        }
+        .todoListMain .header button:active {
+            outline: 0;
+        }
+        .todoListMain .theList {
+            list-style: none;
+            padding-left: 0;
+            width: 255px;
+        }
+        .todoListMain .theList li {
+            color: #333;
+            background-color: rgba(255,255,255,.5);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script type="text/babel">
+        var TodoItems = React.createClass({
+            render: function() {
+                var todoEntries = this.props.entries;
+
+                function createTasks(item) {
+                    return <li key={item.key}>{item.text}</li>
+                }
+
+                var listItems = todoEntries.map(createTasks);
+
+                return (
+                    <ul className="theList">
+                        {listItems}
+                    </ul>
+                );
+            }
+        });
+
+        var TodoList = React.createClass({
+            getInitialState: function () {
+                return {
+                    items: []
+                }
+            },
+            addItem: function (e) {
+                var itemArray = this.state.items;
+
+                itemArray.push({
+                    text: this._inputElement.value,
+                    key: Date.now()
+                });
+
+                this.setState({
+                    items: itemArray
+                });
+
+                this._inputElement.value = '';
+
+                e.preventDefault();
+            },
+            render: function () {
+                return (
+                    <div className="todoListMain">
+                        <div className="header">
+                            <form onSubmit={this.addItem}>
+                                <input type="text" ref={(a) => this._inputElement = a}
+                                       placeholder="Enter Task"/>
+                                <button type="submit">Add</button>
+                            </form>
+                        </div>
+                        <TodoItems entries={this.state.items}/>
+                    </div>
+                );
+            }
+        });
+
+        ReactDOM.render(
+            <TodoList />,
+            document.querySelector('#container')
+        );
+    </script>
+</body>
+</html>

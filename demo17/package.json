@@ -1,0 +1,30 @@
+{
+  "name": "react-demo",
+  "version": "1.0.0",
+  "description": "react demo",
+  "main": "bundle.js",
+  "scripts": {
+    "start": "webpack -d --progress --colors --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guihua/react-demo.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "guihua.pgh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/guihua/react-demo/issues"
+  },
+  "homepage": "https://github.com/guihua/react-demo#readme",
+  "devDependencies": {
+    "css-loader": "^0.26.0",
+    "jsx-loader": "^0.13.2",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.3"
+  }
+}
